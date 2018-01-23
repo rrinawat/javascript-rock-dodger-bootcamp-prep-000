@@ -27,16 +27,16 @@ function checkCollision(rock) {
   // GAME_HEIGHT - 20 - 20 = 360px;
   if (top > 360) {
     const dodgerLeftEdge = positionToInteger(DODGER.style.left)
-
     // FIXME: The DODGER is 40 pixels wide -- how do we get the right edge?
-    const dodgerRightEdge = 0;
-
+    const dodgerRightEdge = dodgerLeftEdge + 40
     const rockLeftEdge = positionToInteger(rock.style.left)
-
     // FIXME: The rock is 20 pixel's wide -- how do we get the right edge?
-    const rockRightEdge = 0;
+    const rockRightEdge = rockLeftEdge + 20
 
-    if (false /**
+    if ( rockLeftEdge < dodgerLeftEdge && rockRightEdge > dodgerLeftEdge
+      ||
+      rockLeftEdge > dodgerLeftEdge && rockRightEdge < dodgerRightEdge ||
+      rockLeftEdge < dodgerRightEdge && rockRightEdge >dodgerRightEdge === false /**
                * Think about it -- what's happening here?
                * There's been a collision if one of three things is true:
                * 1. The rock's left edge is < the DODGER's left edge,
@@ -59,7 +59,6 @@ function createRock(x) {
 
   // Hmmm, why would we have used `var` here?
   var top = 0
-
   rock.style.top = top
 
   /**
@@ -79,11 +78,16 @@ function createRock(x) {
      * If a rock collides with the DODGER,
      * we should call endGame()
      */
+     var check = checkCollision(rock);
+     if (check = true){
+       endGame()
+     }
 
     /**
      * Otherwise, if the rock hasn't reached the bottom of
      * the GAME, we want to move it again.
      */
+     else if ()
 
     /**
      * But if the rock *has* reached the bottom of the GAME,
@@ -108,6 +112,11 @@ function createRock(x) {
  * Finally, alert "YOU LOSE!" to the player.
  */
 function endGame() {
+  var gameInterval = null;
+  ROCKS = []
+  function moveDodger(e) {}
+  alert("YOU LOSE!")
+
 }
 
 function moveDodger(e) {
